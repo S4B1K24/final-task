@@ -1,0 +1,12 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: abekrenev-devops-final-task-certificate
+  namespace: abekrenev-devops-final-task
+spec:
+  dnsNames:
+  - 'abekrenev.dacdevops.ru'
+  issuerRef:
+    kind: ClusterIssuer
+    name: yc-clusterissuer
+  secretName: abekrenev-devops-final-task-cert
