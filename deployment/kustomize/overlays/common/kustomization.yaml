@@ -3,7 +3,7 @@ kind: Kustomization
 
 images:
   - name: final-task-image
-    newName: sashkevich4/abekrenev-devops-final-task
+    newName: S4B1K24/alin-final-task
     newTag: v1.1.1
 
 resources:
