@@ -1,22 +1,22 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: abekrenev-devops-final-task-ingress
+  name: alin-final-task-ingress
   annotations:
     kubernetes.io/ingress.class: "nginx"
 spec:
   rules:
-    - host: abekrenev.dacdevops.ru
+    - host: alin.dacdevops.ru
       http:
         paths:
           - path: /
             pathType: Prefix
             backend:
               service:
-                name: abekrenev-devops-final-task-service
+                name: alin-final-task-service
                 port:
                   name: http
   tls:
     - hosts:
-      - abekrenev.dacdevops.ru
-      secretName: abekrenev-devops-final-task-cert
+      - alin.dacdevops.ru
+      secretName: alin-final-task-cert
