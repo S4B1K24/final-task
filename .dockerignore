@@ -1,6 +1,8 @@
-ve
-staticfiles
-.gitignore
-README.md
 .git
-.idea
+.gitignore
+Taskfile.yaml
+docker-compose.yaml
+README.md
+.vscode
+.venv
+.dockerignore
