@@ -1,36 +1,64 @@
+---
+version: "3.9"
+
 services:
-  sampleapp:
-    restart: always
-    image: sampleapp:latest
+  prod:
     build:
       context: .
       dockerfile: Dockerfile
     ports:
-      - 8000:8000
+      - ${PORT}:8000
+    container_name: abekrenev-devops-final-task-prod
+    restart: always
     tty: true
     environment:
       PYTHONUNBUFFERED: 1
-    env_file:
-      - .env
-    command:
-      #- python manage.py runserver 0.0.0.0:8000
-      - gunicorn --bind 0.0.0.0:8000 sampleproject.wsgi
+    env_file: .env
+    networks:
+      - api
+    volumes:
+      - ./sampleapp:/opt/app/sampleapp
+      - ./sampleproject:/opt/app/sampleproject
+    depends_on: 
+      - db
+    command: gunicorn
 
   migrate:
+    build:
+      context: .
+      dockerfile: Dockerfile
     restart: never
-    image: sampleapp:latest
+    container_name: abekrenev-devops-final-task-migrate
     profiles:
       - migrate
     tty: true
     environment:
       PYTHONUNBUFFERED: 1
-    env_file:
-      - .env
-    command:
-      - python manage.py migrate
+    env_file: .env
+    volumes:
+      - ./sampleapp:/opt/app/sampleapp
+      - ./sampleproject:/opt/app/sampleproject
+      - migrationdata:/opt/app/sampleapp/migrations
+    command: migrate
+    networks:
+      - api
 
   db:
-    image: postgres:15.2
+    image: postgres:15.1
     restart: always
-    env_file:
-      - .env
+    container_name: abekrenev-devops-final-task-postgres
+    env_file: .env
+    networks:
+      - api
+    ports:
+      - 5432:5432
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+volumes:
+  pgdata:
+  sqlitedata:
+  migrationdata:
+
+networks:
+  api:
