@@ -1,0 +1,36 @@
+version: '3'
+
+env:
+  TITLE: devops-final-task
+  TAG:
+    sh: date "+%y-%m-%d-%H.%M"
+
+tasks:
+  build:
+    cmds:
+      - docker build -t {{.TITLE}}:{{.TAG}} .
+      - echo Success build. name={{.TITLE}}:{{.TAG}}
+
+  test:
+    cmds:
+      - docker run {{.TITLE}}:{{.TAG}} test
+
+  run-dev-server:
+    cmds:
+      - docker run {{.TITLE}}:{{.TAG}} runserver
+
+  run-prod-server:
+    cmds:
+      - docker run -p 8000:8000 {{.TITLE}}:{{.TAG}} gunicorn
+
+  run-compose-prod:
+    cmds:
+      - docker compose up prod
+
+  run-compose-migrate:
+    cmds:
+      - docker compose run migrate 
+
+  down:
+    cmds:
+      - docker compose down
