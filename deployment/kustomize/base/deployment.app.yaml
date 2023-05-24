@@ -1,18 +1,18 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: abekrenev-devops-final-task-deployment-app
+  name: alinfinal-task-deployment-app
   labels:
-    app: abekrenev-devops-final-task
+    app: alin-final-task
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: abekrenev-devops-final-task
+      app: alin-final-task
   template:
     metadata:
       labels:
-        app: abekrenev-devops-final-task
+        app: alin-final-task
     spec:
       initContainers:
         - name: final-task-migrate
@@ -21,7 +21,7 @@ spec:
             - migrate
           envFrom:
             - secretRef:
-                name: abekrenev-devops-final-task-postgres-secret
+                name: alin-final-task-postgres-secret
       containers:
         - name: final-task
           image: final-task-image
@@ -33,7 +33,7 @@ spec:
               protocol: TCP
           envFrom:
             - secretRef:
-                name: abekrenev-devops-final-task-postgres-secret
+                name: alin-final-task-postgres-secret
           resources:
             requests:
               memory: "256Mi"
