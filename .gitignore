@@ -3,4 +3,6 @@
 /venv/
 /ve/
 /staticfiles
+.DS_Store
 .env
+.vscode
