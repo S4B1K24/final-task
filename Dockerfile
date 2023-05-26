@@ -16,7 +16,7 @@ COPY pyproject.toml pyproject.toml
 COPY poetry.lock poetry.lock
 COPY poetry.toml poetry.toml
 
-
+RUN poetry install
 
 EXPOSE 8000
 
