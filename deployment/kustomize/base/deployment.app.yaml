@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: alinfinal-task-deployment-app
+  name: alin-final-task-deployment-app
   labels:
     app: alin-final-task
 spec:

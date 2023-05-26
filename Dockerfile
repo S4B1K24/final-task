@@ -16,7 +16,7 @@ COPY pyproject.toml pyproject.toml
 COPY poetry.lock poetry.lock
 COPY poetry.toml poetry.toml
 
-RUN poetry install
+
 
 EXPOSE 8000
 
@@ -27,4 +27,4 @@ COPY sampleapp sampleapp
 COPY sampleproject sampleproject
 COPY manage.py manage.py
 
-ENTRYPOINT [ "./entrypoint.sh" ]
+ENTRYPOINT ["sh", "entrypoint.sh"]
