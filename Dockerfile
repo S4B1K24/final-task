@@ -10,7 +10,8 @@ RUN apt install -y \
     rm -rf /var/lib/apt/lists/*	
 
 RUN pip install poetry
-    
+
+RUN pip install Django 
 
 COPY pyproject.toml pyproject.toml
 COPY poetry.lock poetry.lock
