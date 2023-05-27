@@ -2,6 +2,7 @@
 
 if [ -f .env ]; then
     source .env
+    pip install Django
 fi
 
 if [ $1 = "gunicorn" ]; then
