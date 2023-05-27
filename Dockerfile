@@ -12,7 +12,7 @@ RUN apk add -U --no-cache \
 WORKDIR /opt/app
 
 COPY . .
-RUN poetry install
+
 
 COPY pyproject.toml pyproject.toml
 COPY poetry.lock poetry.lock
