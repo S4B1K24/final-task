@@ -1,18 +1,30 @@
-FROM python:3.10.7-slim-buster
+FROM python:3.11.3-slim
+WORKDIR /opt/app
 
-WORKDIR /usr/src/app
+RUN apt update && \
+    apt upgrade && \
+    python -m pip install --upgrade pip 
 
-ENV PYTHONDONTWRITEBYTECODE 1
-ENV PYTHONUNBUFFERED 1
+RUN apt install -y \
+    wget && \
+    rm -rf /var/lib/apt/lists/*	
 
-RUN apt-get update && apt-get install -y netcat
+RUN pip install \
+    poetry
 
-RUN pip install --upgrade pip
-COPY ./requirements.txt .
-RUN pip install -r requirements.txt
+COPY pyproject.toml pyproject.toml
+COPY poetry.lock poetry.lock
+COPY poetry.toml poetry.toml
 
-COPY . /usr/src/app/
+RUN poetry install
 
-RUN chmod +x entrypoint.sh
+EXPOSE 8000
 
-ENTRYPOINT ["/usr/src/app/entrypoint.sh"]
+COPY entrypoint.sh entrypoint.sh
+RUN chmod u+x entrypoint.sh
+
+COPY sampleapp sampleapp
+COPY sampleproject sampleproject
+COPY manage.py manage.py
+
+ENTRYPOINT [ "./entrypoint.sh" ]
