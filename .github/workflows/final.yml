@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
     inputs:
       tag: 
-        default: latest
+        defualt: latest
         description: image tag
 
 jobs:
