@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/opt/app/.venv python
 import os
 import sys
 
