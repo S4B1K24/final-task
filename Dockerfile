@@ -1,4 +1,4 @@
-ROM python:3.9-alpine
+FROM python:3.9-alpine
 
 RUN python -m pip install --upgrade pip
 RUN pip install poetry
