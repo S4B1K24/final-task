@@ -9,8 +9,8 @@ RUN apt install -y \
     wget && \
     rm -rf /var/lib/apt/lists/*	
 
-RUN pip install \
-    poetry
+RUN pip install poetry
+    
 
 COPY pyproject.toml pyproject.toml
 COPY poetry.lock poetry.lock
