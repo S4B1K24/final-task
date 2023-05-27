@@ -9,9 +9,10 @@ RUN apt install -y \
     wget && \
     rm -rf /var/lib/apt/lists/*	
 
+RUN apk update \
+    && apk add postgresql-dev gcc python3-dev musl-dev
+    
 RUN pip install poetry
-
-RUN pip install Django 
 
 COPY pyproject.toml pyproject.toml
 COPY poetry.lock poetry.lock
