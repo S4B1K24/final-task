@@ -1,11 +1,23 @@
-#!/usr/bin/env python
-import os
-import sys
-import django
+from flask.cli import FlaskGroup
+
+from project import app, db, User
+
+
+cli = FlaskGroup(app)
+
+
+@cli.command("create_db")
+def create_db():
+    db.drop_all()
+    db.create_all()
+    db.session.commit()
+
+
+@cli.command("seed_db")
+def seed_db():
+    db.session.add(User(name="michael"))
+    db.session.commit()
+
 
 if __name__ == "__main__":
-    os.environ.setdefault("DJANGO_SETTINGS_MODULE", "sampleproject.settings")
-
-    from django.core.management import execute_from_command_line
-
-    execute_from_command_line(sys.argv)
+    cli()
