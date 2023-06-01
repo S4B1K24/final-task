@@ -1,7 +1,7 @@
 #!/bin/sh
 
-if [ -f .env ]; then
-    source .env
+if [ -f .venv ]; then
+    source .venv
 fi
 
 if [ $1 = "gunicorn" ]; then
