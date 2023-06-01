@@ -27,5 +27,5 @@ COPY sampleapp sampleapp
 COPY sampleproject sampleproject
 COPY manage.py manage.py
 
-ENTRYPOINT ["./entrypoint.sh"]
+ENTRYPOINT ["sh", "./entrypoint.sh"]
 
