@@ -1,7 +1,7 @@
 #!/bin/sh
 
-if [ -f .venv ]; then
-    source .venv
+if [ -f .env ]; then
+    source .env
 fi
 
 if [ $1 = "gunicorn" ]; then
@@ -9,4 +9,3 @@ if [ $1 = "gunicorn" ]; then
 else
     poetry run python manage.py $@
 fi
-exec $@
