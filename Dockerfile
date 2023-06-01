@@ -1,22 +1,22 @@
-FROM python:3.9-alpine
-
-RUN python -m pip install --upgrade pip
-RUN pip install poetry
-
-RUN apk add -U --no-cache \
-    postgresql-dev \
-    gcc \
-    python3-dev \
-    musl-dev
-
+FROM python:3.11.3-slim
 WORKDIR /opt/app
 
-COPY . .
+RUN apt update && \
+    apt upgrade && \
+    python -m pip install --upgrade pip 
 
+RUN apt install -y \
+    wget && \
+    rm -rf /var/lib/apt/lists/*	
+
+RUN pip install \
+    poetry
 
 COPY pyproject.toml pyproject.toml
 COPY poetry.lock poetry.lock
 COPY poetry.toml poetry.toml
+
+RUN poetry install
 
 EXPOSE 8000
 
@@ -27,5 +27,5 @@ COPY sampleapp sampleapp
 COPY sampleproject sampleproject
 COPY manage.py manage.py
 
-ENTRYPOINT ["./entrypoint.sh"]
+ENTRYPOINT [ "./entrypoint.sh" ]
 
