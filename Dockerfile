@@ -21,7 +21,9 @@ COPY poetry.toml poetry.toml
 EXPOSE 8000
 
 COPY entrypoint.sh entrypoint.sh
+RUN chmod u+x entrypoint.sh
 
+COPY sampleapp sampleapp
 COPY sampleproject sampleproject
 COPY manage.py manage.py
 
