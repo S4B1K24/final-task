@@ -16,7 +16,7 @@ spec:
     spec:
       initContainers:
         - name: alin-final-task-migrate
-          image: final-task-image
+          image: S4B1K24/alin-final-task:v1.1.1
           args:
             - migrate
           envFrom:
@@ -24,7 +24,7 @@ spec:
                 name: alin-final-task-postgres-secret
       containers:
         - name: alin-final-task
-          image: final-task-image
+          image: S4B1K24/alin-final-task:v1.1.1
           args:
             - gunicorn
           ports:
