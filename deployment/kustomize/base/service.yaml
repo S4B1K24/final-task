@@ -9,5 +9,5 @@ spec:
       protocol: TCP
       targetPort: 8000
   selector:
-    app: alin-devops-final-task
+    app: alin-final-task
   type: NodePort
