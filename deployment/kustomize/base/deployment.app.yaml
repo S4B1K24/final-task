@@ -15,7 +15,7 @@ spec:
         app: alin-final-task
     spec:
       initContainers:
-        - name: final-task-migrate
+        - name: alin-final-task-migrate
           image: final-task-image
           args:
             - migrate
