@@ -23,7 +23,7 @@ spec:
             - secretRef:
                 name: alin-final-task-postgres-secret
       containers:
-        - name: final-task
+        - name: alin-final-task
           image: final-task-image
           args:
             - gunicorn
