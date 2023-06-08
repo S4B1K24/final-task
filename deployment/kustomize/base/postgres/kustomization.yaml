@@ -5,7 +5,7 @@ commonLabels:
   app: alin-final-task
 
 images:
-  - name: final-task
+  - name: alin-final-task
     newName: S4B1K24/alin-final-task
     newTag: v1.1.0
 
